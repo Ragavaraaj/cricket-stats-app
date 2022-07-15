@@ -1,0 +1,11 @@
+{
+  "name": "cricket_score",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "cd ./Backend & npm run start:dev & cd ../Frontend & npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}

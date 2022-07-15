@@ -1,0 +1,13 @@
+{
+  "exportall.config.relExclusion": ["/Frontend/src/TableNew/index.ts"],
+  "exportall.config.folderListener": [
+    "/Frontend/src/TableNew",
+    "/Frontend/src/types",
+    "/Frontend/src/Table/Rows",
+    "/Frontend/src/Table",
+    "/Frontend/src/Table/Row",
+    "/Frontend/src/components",
+    "/Frontend/src/Table/SubRow",
+    "/Frontend/src/wrappers"
+  ]
+}
