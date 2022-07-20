@@ -9,6 +9,7 @@ import {
 import { ChevronBtn, ObjectToDisplay } from '../../components';
 import { Member, Teams } from '../../types';
 import { TableRowWrapper } from '../../wrappers';
+import { Matches } from '../SubRow';
 
 interface TeamsTableRowProps {
   data: Teams;
@@ -45,6 +46,7 @@ export const TeamsTableRow = ({ data, children }: TeamsTableRowProps) => {
   const { short_name: shortName, members, id, ...gridData } = data;
 
   const [openSubRow, setOpenSubRow] = useState(false);
+  const [openMatches, setOpenMatches] = useState(false);
   const [selectSubRow, setSelectSubRow] = useState(0);
   const [player, setPlayer] = useState({});
 
@@ -103,8 +105,13 @@ export const TeamsTableRow = ({ data, children }: TeamsTableRowProps) => {
     >
       <div className="grid grid-cols-2 gap-4 items-center flex-grow">
         <ObjectToDisplay data={gridData} />
+        <ChevronBtn
+          onClick={() => setOpenMatches((prv) => !prv)}
+          label="Matches"
+        />
       </div>
       {renderSubRow()}
+      {openMatches ? <Matches teamId={id} shortName={shortName} /> : ''}
     </TableRowWrapper>
   );
 };

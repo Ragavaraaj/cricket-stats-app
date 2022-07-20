@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, FindOptionsSelect, Repository } from 'typeorm';
+import { FindManyOptions, FindOptionsSelect, Like, Repository } from 'typeorm';
 import { Player } from '../database';
 
 @Injectable()
@@ -31,10 +31,11 @@ export class PlayerService {
     };
     if (filter) {
       const newFilter = filter.replace(/ /g, '').toLowerCase();
-      if (newFilter === 'cap') query.where = { isCaption: true };
-      if (newFilter === 'players') query.where = { team: true };
+      query.where = { name: Like(`%${filter}%`) };
       if (newFilter.length < 5)
         query.where = { team: { short_name: newFilter.toUpperCase() } };
+      if (newFilter === 'cap') query.where = { isCaption: true };
+      if (newFilter === 'players') query.where = { team: true };
     }
     return await this.playerRepository.find(query);
   }

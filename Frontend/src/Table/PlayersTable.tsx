@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Player } from '../types';
 import { TableWrapper } from '../wrappers/TableWrapper';
 import { PlayerTableRow } from './Row';
 import { PlayerStats } from './SubRow';
+import { debounce } from 'lodash';
 
 export type FormattedPlayer = Partial<
   Player & { is_caption_for: string; is_player_for: string }
@@ -38,20 +39,20 @@ export const PlayersTable = () => {
     refetch,
   } = useQuery('allPlayerData', fetchTeams(value));
 
+  const refetchDebounce = useCallback(debounce(refetch, 500), []);
+
   const handleClick = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    setTimeout(() => {
-      refetch();
-    }, 1000);
+    refetchDebounce();
   };
 
   return (
     <div className="flex flex-col">
       <input
-        className="py-3 px-2 my-5 mx-16 border-indigo-400 border-2 rounded-lg focus:border-indigo-600"
+        className="py-3 px-4 my-5 mx-16 border-indigo-400 border-2 rounded-lg focus:border-indigo-600"
         type="text"
         value={value}
-        placeholder="Search"
+        placeholder={`Search ("players" or "cap" to filter assigned players or team short names)`}
         onChange={handleClick}
       />
       <TableWrapper

@@ -1,11 +1,18 @@
 import { Logger, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TeamSeederService } from 'src/seeddata';
+import { TeamSeederService } from 'src/seeddata/teams.seed';
 import { PlayerSeederService } from 'src/seeddata/player.seed';
 import { Seeder } from 'src/seeddata/seeder';
-import { BattingStats, BowlingStats, Player, Team } from 'src/database';
+import {
+  BattingStats,
+  BowlingStats,
+  Matches,
+  Player,
+  Team,
+} from 'src/database';
 import { BattingStatsSeederService } from 'src/seeddata/batting.seed';
 import { BowlingStatsSeederService } from 'src/seeddata/bowling.seed';
+import { MatchesSeederService } from 'src/seeddata/matches.seed';
 
 @Module({
   imports: [
@@ -16,10 +23,16 @@ import { BowlingStatsSeederService } from 'src/seeddata/bowling.seed';
       username: 'root',
       password: 'root',
       database: 'test',
-      entities: [Player, Team, BowlingStats, BattingStats],
+      entities: [Player, Team, BowlingStats, BattingStats, Matches],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Team, Player, BattingStats, BowlingStats]),
+    TypeOrmModule.forFeature([
+      Team,
+      Player,
+      BattingStats,
+      BowlingStats,
+      Matches,
+    ]),
   ],
   providers: [
     Logger,
@@ -27,6 +40,7 @@ import { BowlingStatsSeederService } from 'src/seeddata/bowling.seed';
     PlayerSeederService,
     BattingStatsSeederService,
     BowlingStatsSeederService,
+    MatchesSeederService,
     Seeder,
   ],
 })
