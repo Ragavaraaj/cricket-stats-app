@@ -71,4 +71,15 @@ export class BowlingStatsSeederService {
     bowlingStats.player = player;
     return this.bowlingStatsRepository.save(bowlingStats);
   }
+
+  async resetTable() {
+    const ids = await this.bowlingStatsRepository.find({
+      select: { id: true },
+    });
+    if (ids.length > 0)
+      return await Promise.all(
+        ids.map(async (id) => this.bowlingStatsRepository.delete(id)),
+      );
+    return;
+  }
 }

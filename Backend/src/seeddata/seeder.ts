@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { BattingStatsSeederService } from './batting.seed';
 import { BowlingStatsSeederService } from './bowling.seed';
+import { MatchesSeederService } from './matches.seed';
 import { PlayerSeederService } from './player.seed';
 import { TeamSeederService } from './teams.seed';
 
@@ -12,6 +13,7 @@ export class Seeder {
     private readonly playerSeederService: PlayerSeederService,
     private readonly battingStatsSeederService: BattingStatsSeederService,
     private readonly bowlingStatsSeederService: BowlingStatsSeederService,
+    private readonly matchesSeederService: MatchesSeederService,
   ) {}
   private teamIds: string[];
   private playerIds: string[];
@@ -34,11 +36,25 @@ export class Seeder {
     return newArr;
   }
 
+  private async deleteExisting() {
+    await this.battingStatsSeederService.resetTable();
+    await this.bowlingStatsSeederService.resetTable();
+    await this.matchesSeederService.resetTable();
+    await this.playerSeederService.resetTable();
+    await this.teamSeederService.resetTable();
+  }
+
   async seed() {
+    await this.deleteExisting();
+
     this.teamIds = await Promise.all(
       this.teamSeederService.createInitialData(),
     );
     this.logger.log(`have created ${this.teamIds.length} Teams`);
+
+    this.matchesSeederService.createMatches(this.teamIds);
+
+    this.logger.log(`have created matches ${this.teamIds.length} Teams`);
 
     this.playerIds = await Promise.all(
       this.playerSeederService.createInitialData(),

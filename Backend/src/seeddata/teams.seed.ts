@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Player, Team } from 'src/database';
 import { Repository } from 'typeorm';
 
-type TeamDataType = Omit<Omit<Team, 'id'>, 'members'>;
+type TeamDataType = Omit<Omit<Omit<Team, 'id'>, 'members'>, 'matches'>;
 
 @Injectable()
 export class TeamSeederService {
@@ -101,5 +101,14 @@ export class TeamSeederService {
     player.team = team;
     player.isCaption = isCaption ?? false;
     return this.playerRepository.save(player);
+  }
+
+  async resetTable() {
+    const ids = await this.teamRepository.find({ select: { id: true } });
+    if (ids.length > 0)
+      return await Promise.all(
+        ids.map(async (id) => this.teamRepository.delete(id)),
+      );
+    return;
   }
 }

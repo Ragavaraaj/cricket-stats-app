@@ -3,7 +3,7 @@ import { ChevronBtn } from '../components';
 
 interface TableRowWrapperProps {
   shortName?: string;
-  children: [ReactNode, ReactNode];
+  children: [ReactNode, ReactNode, ReactNode];
   showChevronBtn: boolean;
   onChevronClick: () => void;
 }
@@ -31,5 +31,6 @@ export const TableRowWrapper = ({
       )}
     </div>
     {children[1]}
+    {children[2]}
   </div>
 );

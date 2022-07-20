@@ -1,10 +1,12 @@
 import { HTMLProps } from 'react';
-import { BackBtn } from '../components';
-
+import { BackBtn, ChevronBtn } from '../components';
+interface ButtonsOptions extends HTMLProps<HTMLButtonElement> {
+  isToggle?: boolean;
+}
 interface SubRowWrapperProps {
   title: string;
   children: React.ReactNode;
-  buttons?: HTMLProps<HTMLButtonElement>[];
+  buttons?: ButtonsOptions[];
   onBack?: () => void;
 }
 
@@ -17,21 +19,26 @@ export const SubRowWrapper = ({
   const renderButtons = () => {
     return (
       <div className="flex gap-4 ml-auto">
-        {buttons?.map(({ value, ...props }: any, i) => (
-          <button
-            key={i * 2}
-            {...props}
-            className="bg-indigo-400 mt-3.5 m-auto py-2 px-4 rounded-lg text-white font-extrabold capitalize"
-          >
-            {value}
-          </button>
-        ))}
+        {buttons?.map(
+          ({ label, isToggle, type, ...props }: ButtonsOptions, i) =>
+            !isToggle ? (
+              <button
+                key={i * 2}
+                {...props}
+                className="bg-indigo-400 mt-3.5 m-auto py-2 px-4 rounded-lg text-white font-extrabold capitalize"
+              >
+                {label}
+              </button>
+            ) : (
+              <ChevronBtn onClick={props.onClick} label={label} />
+            ),
+        )}
       </div>
     );
   };
 
   return (
-    <div className="px-4 pt-2">
+    <div className="px-4 pt-2 mb-6">
       <div className="flex gap-3 my-3">
         {onBack ? <BackBtn onClick={onBack} /> : ''}
         <h1 className="text-2xl capitalize font-extrabold justify-items-center self-center">

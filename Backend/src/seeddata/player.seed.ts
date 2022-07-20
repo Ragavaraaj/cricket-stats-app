@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Player } from 'src/database';
 import { Repository } from 'typeorm';
@@ -4741,5 +4741,14 @@ export class PlayerSeederService {
         return value.id;
       });
     });
+  }
+
+  async resetTable() {
+    const ids = await this.playerRepository.find({ select: { id: true } });
+    if (ids.length > 0)
+      return await Promise.all(
+        ids.map(async (id) => this.playerRepository.delete(id)),
+      );
+    return;
   }
 }
