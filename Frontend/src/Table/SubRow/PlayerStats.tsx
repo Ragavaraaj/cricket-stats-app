@@ -133,7 +133,7 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
         </LoadingWrapper>
       ) : (
         <BarChart
-          width={window.screen.width - 200}
+          width={window.innerWidth - 200}
           height={500}
           data={data?.chartData}
           margin={{
@@ -142,6 +142,7 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
             left: 20,
             bottom: 5,
           }}
+          className="mt-5"
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="year" />
