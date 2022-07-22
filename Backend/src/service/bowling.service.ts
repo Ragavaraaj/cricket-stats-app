@@ -29,6 +29,12 @@ export class BowlingService {
       relations: {
         player: true,
       },
+      select: {
+        player: {
+          name: true,
+          id: true,
+        },
+      },
       where: {
         player: {
           id: playerId,
