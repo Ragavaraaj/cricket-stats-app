@@ -17,5 +17,6 @@ export interface BattingStats {
 }
 
 export interface BattingStatsPlayer {
-  id: number;
+  id: number
+  name: string
 }

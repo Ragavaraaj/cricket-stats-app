@@ -31,6 +31,7 @@ export class BattingService {
       },
       select: {
         player: {
+          name: true,
           id: true,
         },
       },

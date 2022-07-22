@@ -4,7 +4,7 @@ import { ObjectToDisplay } from '../../components/';
 import { SubRowWrapper, LoadingWrapper } from '../../wrappers';
 
 import { PlayersStatsSubRow } from '../Row/TeamsTableRow';
-import { BattingStats } from '../../types';
+import { BattingStats, BowlingStats } from '../../types';
 import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
 
 interface PlayerStatsProps {
@@ -17,16 +17,23 @@ interface ButtonsOptions extends HTMLProps<HTMLButtonElement> {
 
 const fetchPlayer = (key: string, id: string) => async () => {
   const res = await fetch(`http://localhost:3001/${key}/${id}`);
-  const data: BattingStats[] = await res.json();
+  const data: any[] = await res.json();
   return data.reduce(
     (acc, each) => {
-      const copy: Partial<BattingStats> = { ...each };
+      const copy: Partial<BattingStats | BowlingStats> = { ...each };
       delete copy.year;
       delete copy.player;
       delete copy.id;
       return {
         statsData: { ...acc.statsData, [each.year]: copy },
-        chartData: [...acc.chartData, { year: each.year, runs: each.runs }],
+        chartData: [
+          ...acc.chartData,
+          {
+            year: each.year,
+            [`${key}_chart_value`]:
+              key === 'batting' ? each.runs : each.wickets,
+          },
+        ],
       };
     },
     { statsData: {}, chartData: [] as any },
@@ -148,7 +155,11 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
           <XAxis dataKey="year" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="runs" fill="#82ca9d" />
+          <Bar
+            dataKey={`${key.path}_chart_value`}
+            name={key.path === 'batting' ? 'runs' : 'wickets'}
+            fill="#82ca9d"
+          />
         </BarChart>
       )}
     </SubRowWrapper>

@@ -93,22 +93,24 @@ export const TeamsTableRow = ({ data, children }: TeamsTableRowProps) => {
     }
   };
 
-  const handleChevronClick = () => {
-    setOpenSubRow((prv) => !prv);
-  };
-
   return (
-    <TableRowWrapper
-      shortName={shortName}
-      showChevronBtn={members?.length > 0 ? true : false}
-      onChevronClick={handleChevronClick}
-    >
+    <TableRowWrapper shortName={shortName} showChevronBtn={false}>
       <div className="grid grid-cols-2 gap-4 items-center flex-grow">
         <ObjectToDisplay data={gridData} />
-        <ChevronBtn
-          onClick={() => setOpenMatches((prv) => !prv)}
-          label="Matches"
-        />
+        <div className="flex gap-2">
+          {members?.length > 0 ? (
+            <ChevronBtn
+              onClick={() => setOpenSubRow((prv) => !prv)}
+              label="Members"
+            />
+          ) : (
+            ''
+          )}
+          <ChevronBtn
+            onClick={() => setOpenMatches((prv) => !prv)}
+            label="Matches"
+          />
+        </div>
       </div>
       {renderSubRow()}
       {openMatches ? <Matches teamId={id} shortName={shortName} /> : ''}

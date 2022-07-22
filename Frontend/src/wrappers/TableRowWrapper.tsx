@@ -5,7 +5,7 @@ interface TableRowWrapperProps {
   shortName?: string;
   children: [ReactNode, ReactNode, ReactNode];
   showChevronBtn: boolean;
-  onChevronClick: () => void;
+  onChevronClick?: () => void;
 }
 
 export const TableRowWrapper = ({
@@ -27,7 +27,7 @@ export const TableRowWrapper = ({
       {showChevronBtn ? (
         <ChevronBtn onClick={onChevronClick} />
       ) : (
-        <div className="h-10 w-10"></div>
+        <div className="w-1"></div>
       )}
     </div>
     {children[1]}
