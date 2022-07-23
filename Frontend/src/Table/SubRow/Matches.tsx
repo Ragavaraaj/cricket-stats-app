@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Display } from '../../components/';
 import { MatchesResponse } from '../../types';
-import { SubRowWrapper, LoadingWrapper } from '../../wrappers';
+import { SubRowWrapper, LoadingWrapper, ButtonsOptions } from '../../wrappers';
 
 interface MatchesProps {
   teamId: number;
@@ -12,18 +12,35 @@ interface MatchesProps {
 const fetchMatches = (id: number) => async () => {
   const res = await fetch(`http://localhost:3001/matches/${id}`);
   const data: MatchesResponse[] = await res.json();
-  return data.reduce((acc, each) => {
-    const copy: any = { ...each };
-    delete copy.id;
-    delete copy.session;
-    return {
-      ...acc,
-      [each.session]: [
-        ...(acc?.[each.session as keyof typeof acc] ?? []),
-        copy,
-      ],
-    };
-  }, {});
+  return {
+    formatted: data.reduce((acc, each) => {
+      const copy: Partial<MatchesResponse> = { ...each };
+      delete copy.id;
+      delete copy.session;
+      return {
+        ...acc,
+        [each.session]: [
+          ...(acc?.[each.session as keyof typeof acc] ?? []),
+          copy,
+        ],
+      };
+    }, {}),
+    original: data.map((each) => {
+      const copy: Partial<
+        | MatchesResponse & {
+            team_a_short_name: string;
+            team_b_short_name: string;
+          }
+      > = {
+        ...each,
+      };
+      delete copy.team_a;
+      delete copy.team_b;
+      copy['team_a_short_name'] = each.team_a.short_name;
+      copy['team_b_short_name'] = each.team_b.short_name;
+      return copy;
+    }),
+  };
 };
 
 interface MatchCardProps {
@@ -58,16 +75,25 @@ export const Matches = ({ teamId, shortName }: MatchesProps) => {
     fetchMatches(teamId ?? -1),
   );
 
+  const buttons: ButtonsOptions[] = [
+    {
+      btnType: 'download',
+      data: data?.original ?? '',
+      label: 'Download All Matches',
+      fileName: 'matches.csv',
+    },
+  ];
+
   return (
-    <SubRowWrapper title="Matches">
+    <SubRowWrapper title="Matches" buttons={buttons}>
       <LoadingWrapper
         isError={error ? true : false}
         isLoading={isFetching || isLoading}
       >
         <>
           <div className="flex place-content-around my-5 items-center">
-            {data ? (
-              Object.keys(data ?? {}).map((key, i) => (
+            {data?.formatted ? (
+              Object.keys(data.formatted ?? {}).map((key, i) => (
                 <button
                   key={i * 2}
                   className={`border-2 border-indigo-400 hover:bg-indigo-400 hover:text-white px-4 py-1 rounded-lg ${
@@ -85,7 +111,9 @@ export const Matches = ({ teamId, shortName }: MatchesProps) => {
             )}
           </div>
           <div className="grid grid-cols-3 gap-3">
-            {(data?.[year as keyof typeof data] ?? []).map?.((each) => (
+            {(
+              data?.formatted?.[year as keyof typeof data.formatted] ?? []
+            ).map?.((each) => (
               <MatchCard cardData={each} shortName={shortName} />
             ))}
           </div>

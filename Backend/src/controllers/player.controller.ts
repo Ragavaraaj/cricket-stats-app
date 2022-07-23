@@ -10,7 +10,8 @@ import {
 } from '@nestjs/common';
 import { PlayerService } from '../service';
 import { Player } from '../database';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('player')
 @Controller('/player')
 export class PlayerController {
   constructor(private readonly playerService: PlayerService) {}

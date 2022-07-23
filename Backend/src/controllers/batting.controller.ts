@@ -9,7 +9,8 @@ import {
 } from '@nestjs/common';
 import { BattingService } from '../service';
 import { BattingStats } from '../database';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('batting')
 @Controller('/batting/:id')
 export class BattingController {
   constructor(private readonly battingService: BattingService) {}

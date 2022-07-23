@@ -1,0 +1,465 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Cricket_Project",
+  "dateExported": "2022-07-23T10:10:23.557Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "4fa2bbc7-5d41-42e1-a08c-baf6804dde74",
+      "name": "users",
+      "containerId": "",
+      "created": "2022-07-04T18:47:39.465Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "player",
+      "containerId": "",
+      "created": "2022-07-04T18:48:52.217Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "team",
+      "containerId": "",
+      "created": "2022-07-04T18:53:21.240Z",
+      "sortNum": 30000
+    },
+    {
+      "_id": "969ff398-3b02-449b-bad5-ee8329912c3d",
+      "name": "batting",
+      "containerId": "",
+      "created": "2022-07-06T16:55:51.604Z",
+      "sortNum": 40000
+    },
+    {
+      "_id": "abed437d-3bda-46aa-beb7-52222496ab78",
+      "name": "bowling",
+      "containerId": "",
+      "created": "2022-07-07T00:17:22.721Z",
+      "sortNum": 50000
+    },
+    {
+      "_id": "6010d460-89d9-4bd6-aa8f-d78d91810ba4",
+      "name": "matches",
+      "containerId": "",
+      "created": "2022-07-20T15:40:21.881Z",
+      "sortNum": 60000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "4754be6d-aa00-49ae-bfcb-85ef7c8e646f",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "4fa2bbc7-5d41-42e1-a08c-baf6804dde74",
+      "name": "create",
+      "url": "{{base_URL}}/user",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2022-07-04T18:46:53.994Z",
+      "modified": "2022-07-05T06:32:15.815Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"firstName\": \"string\",\n  \"lastName\": \"string\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "ed551024-9684-4aef-963e-36bb632e22aa",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "create",
+      "url": "{{base_URL}}/player",
+      "method": "POST",
+      "sortNum": 12500,
+      "created": "2022-07-04T18:51:13.720Z",
+      "modified": "2022-07-08T02:07:25.039Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"V Kohli_V2\",\n  \"batting_style\": \"Right hand\",\n  \"bowling_style\": \"Left hand\",\n  \"dob\": \"November 05, 1988\",\n  \"debate\": \"tets\",\n  \"isCaption\": \"true\",\n  \"country\": \"india\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "e7b9c63b-9f22-42e2-a720-f27377965b44",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "create",
+      "url": "{{base_URL}}/team",
+      "method": "POST",
+      "sortNum": 12500,
+      "created": "2022-07-04T18:53:21.240Z",
+      "modified": "2022-07-05T06:33:17.743Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"csk\",\n  \"home_ground\": \"chennai\",\n  \"owner\": \"me\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "23fb106b-5633-4df0-bf28-8fc212f54b9a",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "update",
+      "url": "{{base_URL}}/player/525",
+      "method": "PUT",
+      "sortNum": 25000,
+      "created": "2022-07-04T18:50:16.105Z",
+      "modified": "2022-07-08T02:08:22.139Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"V Kohli_ff\",\n  \"batting_style\": \"Right hand\",\n  \"bowling_style\": \"Left hand\",\n  \"dob\": \"November 05, 1988\",\n  \"debate\": \"1995\",\n  \"isCaption\": true\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "6b32d448-2b70-4285-8af5-f03b5fc625f1",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "update",
+      "url": "{{base_URL}}/team/4",
+      "method": "PUT",
+      "sortNum": 25000,
+      "created": "2022-07-04T18:53:21.241Z",
+      "modified": "2022-07-07T00:05:41.141Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"kkr\",\n  \"home_ground\": \"kerala\",\n  \"owner\": \"yolo\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "142b2c98-113a-46a2-bf2c-b59c89ec10b1",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "4fa2bbc7-5d41-42e1-a08c-baf6804dde74",
+      "name": "getAll",
+      "url": "{{base_URL}}/all-users",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2022-07-04T18:48:02.737Z",
+      "modified": "2022-07-05T06:34:09.382Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "3b646244-7246-47bd-92cf-897b10d97835",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "update Members",
+      "url": "{{base_URL}}/team/4/member",
+      "method": "PUT",
+      "sortNum": 31250,
+      "created": "2022-07-04T19:00:20.143Z",
+      "modified": "2022-07-07T01:40:33.106Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"playerId\": 21,\n  \"teamId\": 4\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "88ee277f-3380-48e8-aa56-da689c793b4e",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "getOne",
+      "url": "{{base_URL}}/player/116",
+      "method": "GET",
+      "sortNum": 37500,
+      "created": "2022-07-04T18:49:39.217Z",
+      "modified": "2022-07-15T04:01:23.417Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "0db33d41-9ca7-421a-bb24-689524136e9c",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "getOne",
+      "url": "{{base_URL}}/team/5",
+      "method": "GET",
+      "sortNum": 37500,
+      "created": "2022-07-04T18:53:21.242Z",
+      "modified": "2022-07-20T15:57:21.295Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "092a7adf-918d-4974-81c5-0bbfcc0d5b84",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "getAll",
+      "url": "{{base_URL}}/player",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2022-07-04T18:49:06.577Z",
+      "modified": "2022-07-05T06:33:03.247Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "5ca45c0c-09ed-405e-9582-605c90315e8d",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "getAll",
+      "url": "{{base_URL}}/team",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2022-07-04T18:53:21.243Z",
+      "modified": "2022-07-05T06:33:38.455Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "4aa8adcd-638b-4869-b312-a4650cbbaeba",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "dac63ab1-1507-40df-afdc-c8961e00ae90",
+      "name": "delete",
+      "url": "{{base_URL}}/player/525",
+      "method": "DELETE",
+      "sortNum": 70000,
+      "created": "2022-07-04T18:52:16.688Z",
+      "modified": "2022-07-08T02:08:53.799Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "c227479e-bf93-4623-902a-ab83ae089a1c",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "0f74bb5c-4f6e-4442-8c9c-68a500385f6e",
+      "name": "delete",
+      "url": "{{base_URL}}/player/87ac7624-a290-4fbf-a997-08b8e371c2f7",
+      "method": "DELETE",
+      "sortNum": 70000,
+      "created": "2022-07-04T18:53:21.244Z",
+      "modified": "2022-07-05T06:33:43.712Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "322f5ca3-bc9f-4351-80e8-e6e63282b94b",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "969ff398-3b02-449b-bad5-ee8329912c3d",
+      "name": "create",
+      "url": "{{base_URL}}/batting/31",
+      "method": "POST",
+      "sortNum": 80000,
+      "created": "2022-07-06T16:56:03.124Z",
+      "modified": "2022-07-07T15:51:10.798Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"year\": 2014,\n  \"innings\": 10,\n  \"runs\": 10,\n  \"balls\": 10,\n  \"outs\": 10,\n  \"average\": 10,\n  \"strike_rate\": 10,\n  \"high_score\": 10,\n  \"no_of_fifties\": 10,\n  \"no_of_centuries\": 10,\n  \"no_of_fours\": 10,\n  \"no_of_sixes\": 10,\n  \"dot_percentage\": 10\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "5091a185-fc45-4ead-bd7b-0c2c7c25ac35",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "abed437d-3bda-46aa-beb7-52222496ab78",
+      "name": "create",
+      "url": "{{base_URL}}/bowling/4",
+      "method": "POST",
+      "sortNum": 80000,
+      "created": "2022-07-07T00:17:22.721Z",
+      "modified": "2022-07-07T00:33:18.177Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\r\n  \"year\": 2014,\r\n  \"innings\": 10,\r\n  \"runs\": 10,\r\n  \"wickets\": 10,\r\n  \"econ\": 10,\r\n  \"average\": 10,\r\n  \"strike_rate\": 10,\r\n  \"five_wickets\": 10,\r\n  \"best_bowling_innings\": \"10/12\",\r\n  \"no_of_fours\": 10,\r\n  \"no_of_sixes\": 10,\r\n  \"dot_percentage\": 10\r\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "ddfab558-5779-472c-956e-4f78d305ea67",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "6010d460-89d9-4bd6-aa8f-d78d91810ba4",
+      "name": "create",
+      "url": "{{base_URL}}/matches?teamA=4&teamB=5",
+      "method": "POST",
+      "sortNum": 80000,
+      "created": "2022-07-20T15:40:21.881Z",
+      "modified": "2022-07-20T16:01:41.575Z",
+      "headers": [],
+      "params": [
+        { "name": "teamA", "value": "4", "isPath": false },
+        { "name": "teamB", "value": "5", "isPath": false }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"session\": \"2001\",\n  \"team_a_scores\": \"104/10\",\n  \"team_b_scores\": \"150/5\",\n  \"winning_team\": \"RCB\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "d24a3c68-a130-4b3c-aa82-484bc8322b25",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "969ff398-3b02-449b-bad5-ee8329912c3d",
+      "name": "getStats",
+      "url": "{{base_URL}}/batting/1",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2022-07-06T23:47:37.518Z",
+      "modified": "2022-07-09T12:10:39.583Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "b4300687-1a94-48a0-a303-9edf1851fe01",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "abed437d-3bda-46aa-beb7-52222496ab78",
+      "name": "getStats",
+      "url": "{{base_URL}}/bowling/1",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2022-07-07T00:17:22.722Z",
+      "modified": "2022-07-15T06:44:31.586Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "2a81bf9e-eaa9-479c-8130-5b9c16eddbfc",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "6010d460-89d9-4bd6-aa8f-d78d91810ba4",
+      "name": "getMatches",
+      "url": "{{base_URL}}/matches/1",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2022-07-20T15:40:21.882Z",
+      "modified": "2022-07-20T19:08:43.039Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "4518a2e9-873c-474a-8de1-89e9ce009db4",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "969ff398-3b02-449b-bad5-ee8329912c3d",
+      "name": "update",
+      "url": "{{base_URL}}/batting/1",
+      "method": "PUT",
+      "sortNum": 100000,
+      "created": "2022-07-06T23:54:28.358Z",
+      "modified": "2022-07-07T00:16:49.160Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"innings\": 10,\n  \"runs\": 12,\n  \"balls\": 10,\n  \"outs\": 10,\n  \"average\": 10.345,\n  \"strike_rate\": 10,\n  \"high_score\": 10,\n  \"no_of_fifties\": 10,\n  \"no_of_centuries\": 10,\n  \"no_of_fours\": 10,\n  \"no_of_sixes\": 10,\n  \"dot_percentage\": 10\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "542e8970-94d3-4e0a-95bd-d9a6c92e52b4",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "abed437d-3bda-46aa-beb7-52222496ab78",
+      "name": "update",
+      "url": "{{base_URL}}/bowling/7",
+      "method": "PUT",
+      "sortNum": 100000,
+      "created": "2022-07-07T00:17:22.723Z",
+      "modified": "2022-07-07T00:34:31.025Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\r\n  \"year\": 2014,\r\n  \"innings\": 10,\r\n  \"runs\": 10,\r\n  \"wickets\": 15,\r\n  \"econ\": 10,\r\n  \"average\": 10,\r\n  \"strike_rate\": 10,\r\n  \"five_wickets\": 10,\r\n  \"best_bowling_innings\": \"10/12\",\r\n  \"no_of_fours\": 10,\r\n  \"no_of_sixes\": 10,\r\n  \"dot_percentage\": 10\r\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "18ec7963-07bd-4589-8348-aff4882d21c0",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "6010d460-89d9-4bd6-aa8f-d78d91810ba4",
+      "name": "update",
+      "url": "{{base_URL}}/matches/1",
+      "method": "PUT",
+      "sortNum": 100000,
+      "created": "2022-07-20T15:40:21.883Z",
+      "modified": "2022-07-20T16:02:14.764Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"session\": \"2001\",\n  \"team_a_scores\": \"104/10\",\n  \"team_b_scores\": \"150/5\",\n  \"winning_team\": \"PW\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "46bc1203-9e5d-4b66-9484-256edfae85dc",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "969ff398-3b02-449b-bad5-ee8329912c3d",
+      "name": "delete",
+      "url": "{{base_URL}}/batting/4",
+      "method": "DELETE",
+      "sortNum": 110000,
+      "created": "2022-07-07T00:12:02.582Z",
+      "modified": "2022-07-07T00:16:58.000Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "81fb4b7a-acc2-48b6-8caf-838043a2d2bc",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "abed437d-3bda-46aa-beb7-52222496ab78",
+      "name": "delete",
+      "url": "{{base_URL}}/batting/4",
+      "method": "DELETE",
+      "sortNum": 110000,
+      "created": "2022-07-07T00:17:22.724Z",
+      "modified": "2022-07-07T00:17:22.721Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "18ad1cc8-64bf-4379-a9f6-4210d56b6d0f",
+      "colId": "dce3fd30-b5f7-42ec-9c78-c0b3085f67f3",
+      "containerId": "6010d460-89d9-4bd6-aa8f-d78d91810ba4",
+      "name": "delete",
+      "url": "{{base_URL}}/matches/1",
+      "method": "DELETE",
+      "sortNum": 110000,
+      "created": "2022-07-20T15:40:21.884Z",
+      "modified": "2022-07-20T16:02:24.061Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { HTMLProps, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { ObjectToDisplay } from '../../components/';
-import { SubRowWrapper, LoadingWrapper } from '../../wrappers';
+import { SubRowWrapper, LoadingWrapper, ButtonsOptions } from '../../wrappers';
 
 import { PlayersStatsSubRow } from '../Row/TeamsTableRow';
 import { BattingStats, BowlingStats } from '../../types';
@@ -9,10 +9,6 @@ import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
 
 interface PlayerStatsProps {
   removeBackBtn?: boolean;
-}
-
-interface ButtonsOptions extends HTMLProps<HTMLButtonElement> {
-  isToggle?: boolean;
 }
 
 const fetchPlayer = (key: string, id: string) => async () => {
@@ -65,6 +61,7 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
   const buttons: ButtonsOptions[] = [
     {
       label: 'Batting Stats',
+      btnType: 'button',
       onClick: () => {
         key.path !== 'batting' &&
           setKey({
@@ -75,6 +72,7 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
     },
     {
       label: 'Bowling Stats',
+      btnType: 'button',
       onClick: () => {
         key.path !== 'bowling' &&
           setKey({
@@ -85,7 +83,7 @@ export const PlayerStats: PlayersStatsSubRow<PlayerStatsProps> = ({
     },
     {
       label: 'Chart',
-      isToggle: true,
+      btnType: 'chevron',
       onClick: () => {
         setShowChart((prv) => !prv);
       },

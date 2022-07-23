@@ -18,7 +18,7 @@ import { MatchesSeederService } from 'src/seeddata/matches.seed';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgres',
+      host: 'localhost',
       port: 5432,
       username: 'root',
       password: 'root',

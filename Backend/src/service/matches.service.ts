@@ -39,17 +39,6 @@ export class MatchesService {
   }
 
   async getAllMatches(id: string): Promise<Matches[]> {
-    // const data = await this.teamRepository.findOne({
-    //   select: {
-    //     matches: {
-    //       team_b: { name: true, short_name: true },
-    //       team_a: { name: true, short_name: true },
-    //     },
-    //   },
-    //   relations: { matches: true },
-    //   where: { id },
-    // });
-    // return data.matches;
     return await this.matchesRepository.find({
       select: this.selectQuery,
       relations: { team_a: true, team_b: true },
