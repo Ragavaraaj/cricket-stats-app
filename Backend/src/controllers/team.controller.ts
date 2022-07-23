@@ -9,7 +9,9 @@ import {
 } from '@nestjs/common';
 import { TeamService } from '../service';
 import { Team } from '../database';
+import { ApiAcceptedResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('team')
 @Controller('/team')
 export class TeamController {
   constructor(private readonly teamService: TeamService) {}

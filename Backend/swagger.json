@@ -1,0 +1,302 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/player": {
+      "get": {
+        "operationId": "PlayerController_getAllPlayers",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["player"]
+      },
+      "post": {
+        "operationId": "PlayerController_createPlayer",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["player"]
+      }
+    },
+    "/player/{id}": {
+      "get": {
+        "operationId": "PlayerController_getOnePlayer",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["player"]
+      },
+      "delete": {
+        "operationId": "PlayerController_deletePlayer",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["player"]
+      },
+      "put": {
+        "operationId": "PlayerController_updatePlayer",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["player"]
+      }
+    },
+    "/team": {
+      "get": {
+        "operationId": "TeamController_getAllTeams",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["team"]
+      },
+      "post": {
+        "operationId": "TeamController_createTeam",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["team"]
+      }
+    },
+    "/team/{id}": {
+      "get": {
+        "operationId": "TeamController_getOneTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["team"]
+      },
+      "delete": {
+        "operationId": "TeamController_deleteTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["team"]
+      },
+      "put": {
+        "operationId": "TeamController_updateTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["team"]
+      }
+    },
+    "/team/{id}/member": {
+      "put": {
+        "operationId": "TeamController_addPlayerToTeam",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["team"]
+      }
+    },
+    "/batting/{id}": {
+      "post": {
+        "operationId": "BattingController_createBattingStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["batting"]
+      },
+      "delete": {
+        "operationId": "BattingController_deleteBattingStats",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["batting"]
+      },
+      "get": {
+        "operationId": "BattingController_getStatsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["batting"]
+      },
+      "put": {
+        "operationId": "BattingController_updateStatsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["batting"]
+      }
+    },
+    "/bowling/{id}": {
+      "post": {
+        "operationId": "BowlingController_createBowlingStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["bowling"]
+      },
+      "delete": {
+        "operationId": "BowlingController_deleteBowlingStats",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["bowling"]
+      },
+      "get": {
+        "operationId": "BowlingController_getStatsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["bowling"]
+      },
+      "put": {
+        "operationId": "BowlingController_updateStatsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["bowling"]
+      }
+    },
+    "/matches": {
+      "post": {
+        "operationId": "MatchesController_createBattingStatus",
+        "parameters": [
+          {
+            "name": "teamA",
+            "required": true,
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "teamB",
+            "required": true,
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["matches"]
+      }
+    },
+    "/matches/{id}": {
+      "delete": {
+        "operationId": "MatchesController_deleteMatches",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["matches"]
+      },
+      "get": {
+        "operationId": "MatchesController_getAllMatches",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["matches"]
+      },
+      "put": {
+        "operationId": "MatchesController_updateStatsFor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["matches"]
+      }
+    }
+  },
+  "info": {
+    "title": "Cricket Stats Backend",
+    "description": "",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": { "schemas": {} }
+}
